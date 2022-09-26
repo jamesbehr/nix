@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+set -exuo pipefail
+
+for visual in "$VISUAL" nvim vim vi nano; do
+    if which "$visual" >/dev/null 2>&1; then
+        exec "$visual" "$@"
+    fi
+done

@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+# When called without arguments, behave like "git status", otherwise behave
+# like regular git.
+
+if [[ $# -gt 0 ]]; then
+    git "$@"
+else
+    git status
+fi
