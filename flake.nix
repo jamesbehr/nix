@@ -39,6 +39,8 @@
                 node.enable = true;
                 lua.enable = true;
                 terraform.enable = true;
+                c.enable = true;
+                qmk.enable = true;
               };
             };
           }

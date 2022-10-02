@@ -11,6 +11,7 @@
     ./ruby.nix
     ./docker.nix
     ./terraform.nix
+    ./qmk.nix
   ];
 }
 
