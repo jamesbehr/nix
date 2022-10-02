@@ -6,8 +6,7 @@ let shellAliases = {
   vimdiff = "nvim -d";
 }; in
 {
-  # TODO: Clipboard support with xclip, xsel or wl-copy
-  home.packages = with pkgs; [ neovim ];
+  home.packages = with pkgs; [ neovim ripgrep xsel ];
 
   xdg.configFile = {
     "nvim/init.lua" = {

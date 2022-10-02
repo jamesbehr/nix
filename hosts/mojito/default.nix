@@ -113,7 +113,6 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     wget
-    xsel
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
