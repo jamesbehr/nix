@@ -6,12 +6,20 @@ My system configuration and dotfiles for my Unix systems.
 To automatically select the correct configuration based on your hostname, just
 run the following using the repository root as your working directory.
 
-   sudo nixos-rebuild switch --flake .
+    sudo nixos-rebuild switch --flake .
+
+### macOs
+See the [docs](https://github.com/LnL7/nix-darwin) for installation
+instructions. Afterwards, you can update the configuration by running the
+following using the repository root as your working directory.
+
+    darwin-rebuild switch --flake .
 
 ## Hosts
-| Hostname | OS    | Description            |
-|----------|-------|------------------------|
-| `mojito` | NixOS | Primary desktop system |
+| Hostname    | OS    | Description              |
+|-------------|-------|--------------------------|
+| `mojito`    | NixOS | Primary desktop system   |
+| `manhattan` | macOS | 2019 15-inch MacBook Pro |
 
 ## Resources
 ### Manuals
