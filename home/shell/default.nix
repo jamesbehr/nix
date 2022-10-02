@@ -62,8 +62,37 @@
     enable = true;
     aliases = {
       co = "checkout";
-      ci = "commit --verbose";
+      ci = "commit";
+      di = "diff";
+      dc = "diff --cached";
+      fa = "fetch --all";
+      pf = "push --force-with-lease";
       amend = "commit --amend";
+    };
+    extraConfig = {
+      init = {
+        defaultBranch = "main";
+      };
+      merge = {
+        ff = "only";
+      };
+      pull = {
+        rebase = true;
+      };
+      rebase = {
+        autoSquash = true;
+        autoStash = true;
+      };
+      commit = {
+        verbose = true;
+      };
+
+      # Clone shorthands e.g. git clone gh:NixOS/nix -> git clone ssh://git@github.com/NixOS/nix
+      url = {
+        "ssh://git@github.com/" = {
+          insteadOf = [ "github:" "gh:" ];
+        };
+      };
     };
   };
 
