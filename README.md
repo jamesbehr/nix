@@ -15,6 +15,17 @@ following using the repository root as your working directory.
 
     darwin-rebuild switch --flake .
 
+### Live CD
+You can build the custom ISO by running the following command using the
+repository root as your working directory.
+
+    nix build .#nixosConfigurations.iso.config.system.build.isoImage
+
+This will create an installation image which you can use to create a bootable
+flash drive.
+
+    dd status=progress bs=1M if=./result/iso/nixos-*.iso of=/dev/disk/by-id/<flashdrive>
+
 ## Hosts
 | Hostname    | OS    | Description              |
 |-------------|-------|--------------------------|

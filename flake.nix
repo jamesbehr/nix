@@ -17,6 +17,13 @@
 
   outputs = { self, nixpkgs, darwin, home-manager, nur }: {
     nixosConfigurations = {
+      iso = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          "${nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix"
+        ];
+      };
+
       mojito = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
