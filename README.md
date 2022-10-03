@@ -11,7 +11,7 @@ run the following using the repository root as your working directory.
 ### macOs
 To get started, an installation of Nix is required.
 
-    curl -L https://nixos.org/nix/install | sh
+    sh <(curl -L https://nixos.org/nix/install) --daemon
 
 Now clone the repository.
 
@@ -41,10 +41,10 @@ flash drive.
     dd status=progress bs=1M if=./result/iso/nixos-*.iso of=/dev/disk/by-id/<flashdrive>
 
 ## Hosts
-| Hostname    | OS    | Description              |
-|-------------|-------|--------------------------|
-| `mojito`    | NixOS | Primary desktop system   |
-| `manhattan` | macOS | 2019 15-inch MacBook Pro |
+| Hostname       | OS    | Description              |
+|----------------|-------|--------------------------|
+| `mojito`       | NixOS | Primary desktop system   |
+| `C02Z72ZPLVCH` | macOS | 2019 15-inch MacBook Pro |
 
 ## Resources
 ### Manuals

@@ -61,31 +61,31 @@
     };
 
     darwinConfigurations = {
-      manhattan = {
+      C02Z72ZPLVCH = darwin.lib.darwinSystem {
         system = "x86_64-darwin";
         modules = [
-          home-manager.nixosModules.home-manager
+          ./hosts/C02Z72ZPLVCH
+          home-manager.darwinModules.home-manager
           {
             nixpkgs.overlays = [
               nur.overlay
             ];
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.james = { pkgs, ... }: {
+            home-manager.users.jbehr = { pkgs, ... }: {
               imports = [
                 ./home/neovim
                 ./home/shell
-                ./home/firefox
                 ./home/terminal
                 ./home/dev
               ];
               home.stateVersion = "22.05";
-              jb.dev = {
-                terraform.enable = true;
-                docker.enable = true;
-                ruby.enable = true;
-                nix.enable = true;
-              };
+              # jb.dev = {
+              #   terraform.enable = true;
+              #   docker.enable = true;
+              #   ruby.enable = true;
+              #   nix.enable = true;
+              # };
             };
           }
         ];
