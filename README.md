@@ -9,9 +9,23 @@ run the following using the repository root as your working directory.
     sudo nixos-rebuild switch --flake .
 
 ### macOs
-See the [docs](https://github.com/LnL7/nix-darwin) for installation
-instructions. Afterwards, you can update the configuration by running the
-following using the repository root as your working directory.
+To get started, an installation of Nix is required.
+
+    curl -L https://nixos.org/nix/install | sh
+
+Now clone the repository.
+
+    git clone ssh://git@github.com/jamesbehr/niks ~/.config/darwin
+
+The nix-darwin installer doesn't work with flakes out of the box, so you can
+bootstrap it.
+
+    cd ~/.config/darwin
+    nix build --extra-experimental-features flakes --extra-experimental-features nix-command .\#darwinConfigurations.manhattan.system
+    ./result/sw/bin/darwin-rebuild switch --flake ~/.config/darwin
+
+Afterwards, you can update the configuration by running the following using the
+repository root as your working directory.
 
     darwin-rebuild switch --flake .
 
