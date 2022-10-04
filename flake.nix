@@ -80,12 +80,12 @@
                 ./home/dev
               ];
               home.stateVersion = "22.05";
-              # jb.dev = {
-              #   terraform.enable = true;
-              #   docker.enable = true;
-              #   ruby.enable = true;
-              #   nix.enable = true;
-              # };
+              jb.dev = {
+                terraform.enable = true;
+                docker.enable = true;
+                ruby.enable = true;
+                nix.enable = true;
+              };
             };
           }
         ];

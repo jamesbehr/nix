@@ -10,7 +10,6 @@ in
     home = {
       packages = with pkgs; [
         ruby
-        bundler
         rubyPackages.solargraph
       ];
 
