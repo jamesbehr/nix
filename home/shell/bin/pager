@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-set -exuo pipefail
+set -eo pipefail
 
 for pager in "$PAGER" less more; do
     if which "$pager" >/dev/null 2>&1; then

@@ -76,7 +76,6 @@
               imports = [
                 ./home/neovim
                 ./home/shell
-                ./home/terminal
                 ./home/dev
               ];
               home.stateVersion = "22.05";

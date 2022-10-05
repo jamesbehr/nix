@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-set -exuo pipefail
+set -eo pipefail
 
 for visual in "$VISUAL" nvim vim vi nano; do
     if which "$visual" >/dev/null 2>&1; then

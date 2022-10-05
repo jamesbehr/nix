@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-set -exuo pipefail
+set -eo pipefail
 
 for terminal in "$TERMINAL" kitty xterm; do
     if which "$terminal" >/dev/null 2>&1; then
