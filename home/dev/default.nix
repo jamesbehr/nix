@@ -4,6 +4,7 @@
   imports = [
     ./c.nix
     ./go.nix
+    ./haskell.nix
     ./lua.nix
     ./nix.nix
     ./node.nix

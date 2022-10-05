@@ -84,6 +84,9 @@
   services.xserver.enable = true;
   services.xserver.displayManager.sddm.enable = true;
   services.xserver.desktopManager.plasma5.enable = true;
+  services.xserver.windowManager.xmonad.enable = true;
+  services.xserver.windowManager.i3.enable = true;
+  services.gnome.at-spi2-core.enable = true;
 
   # Configure keymap in X11
   # services.xserver.layout = "us";
@@ -96,8 +99,8 @@
   # services.printing.enable = true;
 
   # Enable sound.
-  # sound.enable = true;
-  # hardware.pulseaudio.enable = true;
+  sound.enable = true;
+  hardware.pulseaudio.enable = true;
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;

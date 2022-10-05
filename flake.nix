@@ -42,9 +42,11 @@
                 ./home/firefox
                 ./home/terminal
                 ./home/dev
+                ./home/desktop
               ];
               home.stateVersion = "22.05";
               jb.dev = {
+                haskell.enable = true;
                 go.enable = true;
                 python.enable = true;
                 node.enable = true;

@@ -66,3 +66,7 @@ config["terraformls"].setup({
 config["rnix"].setup({
     on_attach = on_attach,
 })
+
+config["hls"].setup({
+    on_attach = on_attach,
+})
