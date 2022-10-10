@@ -9,6 +9,18 @@
     network-manager-applet = {
       enable = true;
     };
+
+    udiskie = {
+      enable = true;
+    };
+
+    pasystray = {
+      enable = true;
+    };
+
+    blueman-applet = {
+      enable = true;
+    };
   };
 
   systemd.user.services.feh = {
@@ -27,6 +39,7 @@
   };
 
   xsession = {
+    preferStatusNotifierItems = true;
     enable = true;
     windowManager.xmonad = {
       enable = true;

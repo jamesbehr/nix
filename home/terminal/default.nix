@@ -11,6 +11,8 @@
 
     theme = "Tokyo Night"; # TODO: Pick a theme
 
-    settings = { };
+    settings = {
+      enable_audio_bell = false;
+    };
   };
 }

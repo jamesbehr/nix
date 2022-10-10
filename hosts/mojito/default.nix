@@ -87,6 +87,9 @@
   services.xserver.windowManager.xmonad.enable = true;
   services.xserver.windowManager.i3.enable = true;
   services.gnome.at-spi2-core.enable = true;
+  services.dbus.enable = true;
+  services.blueman.enable = true;
+  hardware.bluetooth.enable = true;
 
   # Configure keymap in X11
   # services.xserver.layout = "us";
