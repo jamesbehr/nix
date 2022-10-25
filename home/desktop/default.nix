@@ -3,6 +3,9 @@
 {
   home.packages = with pkgs; [
     feh
+    spotdl
+    audacity
+    reaper
   ];
 
   services = {
@@ -78,5 +81,10 @@
         "class_g = 'Dunst'"
       ];
     };
+  };
+
+  services.fluidsynth = {
+    enable = true;
+    soundService = "pulseaudio";
   };
 }
