@@ -56,7 +56,7 @@
     # TODO: Theme
   };
 
-  home.packages = with pkgs; [ git-open ];
+  home.packages = with pkgs; [ git-open unzip ];
 
   programs.git = {
     enable = true;

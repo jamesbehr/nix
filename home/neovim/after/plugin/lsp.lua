@@ -70,3 +70,7 @@ config["rnix"].setup({
 config["hls"].setup({
     on_attach = on_attach,
 })
+
+config["tsserver"].setup({
+    on_attach = on_attach,
+})

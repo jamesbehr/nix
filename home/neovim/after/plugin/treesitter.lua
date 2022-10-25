@@ -29,8 +29,8 @@ require('nvim-treesitter.configs').setup({
             keymaps = {
                 ["af"] = "@function.outer",
                 ["if"] = "@function.inner",
-                ["ac"] = "@class.outer",
-                ["ic"] = "@class.inner",
+                ["ak"] = "@class.outer",
+                ["ik"] = "@class.inner",
             },
             selection_modes = {
                 ['@parameter.outer'] = 'v', -- charwise
@@ -83,3 +83,4 @@ require("treesitter-context").setup({
 
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+vim.opt.foldlevel = 99 -- don't collapse folds by default
