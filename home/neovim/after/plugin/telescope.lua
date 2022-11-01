@@ -24,7 +24,6 @@ require("telescope").setup({
             case_mode = 'smart_case',
         },
         file_browser = {
-            hijack_netrw = true,
             hidden = true, -- show hidden files by default
         },
     }
@@ -36,12 +35,7 @@ require('telescope').load_extension('file_browser')
 nnoremap("<leader>t", "<cmd>Telescope<cr>")
 
 nnoremap("<leader><leader>", function()
-    local _, ret, _ = utils.get_os_command_output({ 'git', 'rev-parse', '--is-inside-work-tree' })
-    if ret == 0 then
-        builtin.git_files({ show_untracked = true })
-    else
-        builtin.find_files()
-    end
+    builtin.find_files()
 end)
 
 nnoremap("<leader><return>", builtin.buffers)
