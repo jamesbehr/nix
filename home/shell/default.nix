@@ -56,7 +56,7 @@
     # TODO: Theme
   };
 
-  home.packages = with pkgs; [ git-open unzip ];
+  home.packages = with pkgs; [ git-open unzip p7zip ffmpeg tree age ];
 
   programs.git = {
     enable = true;
@@ -103,10 +103,6 @@
       add_newline = true;
     };
   };
-
-  # TODO:
-  # - ssh
-  # - zsh config
 
   programs.readline = {
     enable = true;
@@ -169,4 +165,7 @@
       "ca>": "da>i"
     '';
   };
+
+  services.lorri.enable = true;
+  programs.direnv.enable = true;
 }

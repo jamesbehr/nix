@@ -6,6 +6,7 @@
     spotdl
     audacity
     reaper
+    mplayer
   ];
 
   services = {
