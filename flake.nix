@@ -2,8 +2,8 @@
   description = "James's system configuration";
 
   inputs = {
-    # nixpkgs.url = "github:NixOS/nixpkgs/nixos-20.03";
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-22.11";
+    # nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nur.url = "github:nix-community/NUR";
     darwin = {
       url = "github:lnl7/nix-darwin/master";

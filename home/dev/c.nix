@@ -11,7 +11,6 @@ in
       packages = with pkgs; [
         gcc
         gnumake
-        gdb
         clang-tools
       ];
 
