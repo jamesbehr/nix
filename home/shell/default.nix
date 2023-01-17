@@ -53,10 +53,11 @@
     prefix = "C-Space";
     escapeTime = 0;
     baseIndex = 1;
+    keyMode = "vi";
     # TODO: Theme
   };
 
-  home.packages = with pkgs; [ git-open unzip p7zip ffmpeg tree age ];
+  home.packages = with pkgs; [ git-open unzip p7zip ffmpeg tree age killall graphviz imagemagick ];
 
   programs.git = {
     enable = true;

@@ -2,6 +2,7 @@
 import XMonad
 import XMonad.Hooks.EwmhDesktops
 import XMonad.Hooks.ManageDocks
+import XMonad.Hooks.SetWMName
 import XMonad.Layout.BorderResize
 import XMonad.Layout.Gaps
 import XMonad.Layout.NoBorders
@@ -22,6 +23,7 @@ main =
           { modMask = super,
             terminal = "terminal",
             focusFollowsMouse = False,
+            startupHook = setWMName "LG3D",
             borderWidth = 2,
             workspaces = ["dev", "web", "etc"],
             layoutHook = layouts,

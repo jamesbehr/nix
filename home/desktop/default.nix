@@ -7,6 +7,12 @@
     audacity
     reaper
     mplayer
+    ghidra-bin
+    wine
+    winetricks
+    deluge
+    inkscape
+    xournal
   ];
 
   services = {
