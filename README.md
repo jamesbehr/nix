@@ -8,21 +8,31 @@ run the following using the repository root as your working directory.
 
     sudo nixos-rebuild switch --flake .
 
-### macOs
+### macOS
 To get started, an installation of Nix is required.
 
-    sh <(curl -L https://nixos.org/nix/install) --daemon
+    sh <(curl -L https://nixos.org/nix/install)
 
 Now clone the repository.
 
-    git clone ssh://git@github.com/jamesbehr/niks ~/.config/darwin
+    git clone ssh://git@github.com/jamesbehr/niks ~/niks
+
+You might not have access to Git if this is a fresh machine. In this case you
+can just use `nix-shell -p git` to spin up a shell that has `git` installed.
 
 The nix-darwin installer doesn't work with flakes out of the box, so you can
 bootstrap it.
 
-    cd ~/.config/darwin
-    nix build --extra-experimental-features flakes --extra-experimental-features nix-command .\#darwinConfigurations.manhattan.system
-    ./result/sw/bin/darwin-rebuild switch --flake ~/.config/darwin
+    cd ~/niks
+    nix build --extra-experimental-features "nix-command flakes" .\#darwinConfigurations.<hostname>.system
+    ./result/sw/bin/darwin-rebuild switch --flake .
+
+If this fails, you probably don't have a `/run` directory. macOS has a
+read-only root directory, so you'll need to run the following. The following
+only applies on macOS Big Sur (11) or later.
+
+    printf 'run\tprivate/var/run\n' | sudo tee -a /etc/synthetic.conf
+    /System/Library/Filesystems/apfs.fs/Contents/Resources/apfs.util -t
 
 Afterwards, you can update the configuration by running the following using the
 repository root as your working directory.
@@ -52,6 +62,7 @@ flash drive.
 - [NixOS](https://nixos.org/manual/nixos/stable/)
 - [Home Manager](https://nix-community.github.io/home-manager/)
 - [Home Manager Appendix](https://rycee.gitlab.io/home-manager/options.html)
+- [Nix Darwin](https://daiderd.com/nix-darwin/manual/index.html)
 
 ### Reference
 - [NixOS Modules](https://nixos.wiki/wiki/NixOS_modules)
@@ -63,6 +74,9 @@ flash drive.
   - [Part 3](https://www.tweag.io/blog/2020-07-31-nixos-flakes)
 - [NixOS Wiki](https://nixos.wiki/wiki/Flakes)
 - [Home Manager](https://nix-community.github.io/home-manager/index.html#sec-flakes-nixos-module)
+
+### Articles
+- [Nix Darwin](https://xyno.space/post/nix-darwin-introduction)
 
 ### Configurations
 - https://gitlab.com/liketechnik/nixos-files

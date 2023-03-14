@@ -63,10 +63,10 @@
     };
 
     darwinConfigurations = {
-      C02Z72ZPLVCH = darwin.lib.darwinSystem {
-        system = "x86_64-darwin";
+      sidecar = darwin.lib.darwinSystem {
+        system = "aarch64-darwin"; # use "x86_64-darwin" on pre-M1 Mac
         modules = [
-          ./hosts/C02Z72ZPLVCH
+          ./hosts/sidecar
           home-manager.darwinModules.home-manager
           {
             nixpkgs.overlays = [
@@ -74,7 +74,7 @@
             ];
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.jbehr = { pkgs, ... }: {
+            home-manager.users."james.behr" = { pkgs, ... }: {
               imports = [
                 ./home/neovim
                 ./home/shell
