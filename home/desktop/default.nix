@@ -6,6 +6,8 @@
     spotdl
     audacity
     reaper
+    yabridge
+    yabridgectl
     mplayer
     ghidra-bin
     wine
@@ -13,6 +15,7 @@
     deluge
     inkscape
     xournal
+    teensyduino
   ];
 
   services = {

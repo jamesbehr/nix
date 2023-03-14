@@ -91,6 +91,35 @@
   services.blueman.enable = true;
   hardware.bluetooth.enable = true;
 
+  users.groups.media = {
+    members = [
+      "jackett"
+      "sonarr"
+      "radarr"
+      "plex"
+      "james"
+    ];
+  };
+
+  services.sonarr = {
+    enable = true;
+    openFirewall = true;
+  };
+
+  services.radarr = {
+    enable = true;
+    openFirewall = true;
+  };
+
+  services.jackett = {
+    enable = true;
+  };
+
+  services.plex = {
+    enable = true;
+    openFirewall = true;
+  };
+
   # Configure keymap in X11
   # services.xserver.layout = "us";
   # services.xserver.xkbOptions = {
@@ -105,12 +134,23 @@
   sound.enable = true;
   hardware.pulseaudio.enable = true;
 
+  services.jack = {
+    jackd = {
+      enable = true;
+      extraOptions = [ "-dalsa" "-dhw:CODEC,0" "-r48000" "-p64" "-n2" ];
+    };
+    alsa.enable = false;
+    loopback = {
+      enable = true;
+    };
+  };
+
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
   users.users.james = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" ];
+    extraGroups = [ "wheel" "networkmanager" "jackaudio" "dialout" ];
     description = "James";
     shell = pkgs.zsh;
   };
