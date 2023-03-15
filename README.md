@@ -27,6 +27,10 @@ bootstrap it.
     nix build --extra-experimental-features "nix-command flakes" .\#darwinConfigurations.<hostname>.system
     ./result/sw/bin/darwin-rebuild switch --flake .
 
+nix-darwin also manages Homebrew, but this must be installed before this will work.
+
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
 If this fails, you probably don't have a `/run` directory. macOS has a
 read-only root directory, so you'll need to run the following. The following
 only applies on macOS Big Sur (11) or later.
@@ -54,7 +58,7 @@ flash drive.
 | Hostname       | OS    | Description              |
 |----------------|-------|--------------------------|
 | `mojito`       | NixOS | Primary desktop system   |
-| `C02Z72ZPLVCH` | macOS | 2019 15-inch MacBook Pro |
+| `sidecar`      | macOS | 2021 16-inch MacBook Pro |
 
 ## Resources
 ### Manuals
@@ -76,9 +80,12 @@ flash drive.
 - [Home Manager](https://nix-community.github.io/home-manager/index.html#sec-flakes-nixos-module)
 
 ### Articles
-- [Nix Darwin](https://xyno.space/post/nix-darwin-introduction)
+- [Nix Darwin Introduction](https://xyno.space/post/nix-darwin-introduction)
 
 ### Configurations
 - https://gitlab.com/liketechnik/nixos-files
 - https://github.com/srid/nixos-config
 - https://github.com/EdenEast/nyx
+- https://github.com/sherubthakur/dotfiles
+- https://github.com/Misterio77/nix-starter-configs
+- https://github.com/danielphan2003/flk

@@ -3,7 +3,6 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-22.11";
-    # nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nur.url = "github:nix-community/NUR";
     darwin = {
       url = "github:lnl7/nix-darwin/master";
@@ -67,10 +66,17 @@
         system = "aarch64-darwin"; # use "x86_64-darwin" on pre-M1 Mac
         modules = [
           ./hosts/sidecar
+          {
+            # This is required, otherwise your home directory is assumed to be
+            # "/var/empty" which doesn't exist.
+            # See https://github.com/LnL7/nix-darwin/issues/423
+            users.users."james.behr".home = "/Users/james.behr";
+          }
           home-manager.darwinModules.home-manager
           {
             nixpkgs.overlays = [
               nur.overlay
+              (import overlays/firefox.nix)
             ];
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
@@ -79,6 +85,8 @@
                 ./home/neovim
                 ./home/shell
                 ./home/dev
+                ./home/terminal
+                ./home/firefox
               ];
               home.stateVersion = "22.05";
               jb.dev = {

@@ -13,4 +13,19 @@
 
   # Makes nix-darwin work with zsh. Only bash is enabled by default.
   programs.zsh.enable = true;
+
+  services.lorri.enable = true;
+
+  homebrew = {
+    enable = true;
+    onActivation.autoUpdate = true;
+    brews = [ ];
+    casks = [ "discord" ];
+  };
+
+  system = {
+    keyboard = {
+      remapCapsLockToEscape = true;
+    };
+  };
 }

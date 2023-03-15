@@ -167,6 +167,9 @@
     '';
   };
 
-  services.lorri.enable = true;
+  # Lorri via Home Manager doesn't work on macOS, and is instead handled by Nix
+  # Darwin
+  services.lorri.enable = pkgs.stdenv.isLinux;
+
   programs.direnv.enable = true;
 }
