@@ -13,6 +13,11 @@ To get started, an installation of Nix is required.
 
     sh <(curl -L https://nixos.org/nix/install)
 
+nix-darwin also manages Homebrew, but this must be installed (if you have not
+done so already) before this will work.
+
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
 Now clone the repository.
 
     git clone ssh://git@github.com/jamesbehr/niks ~/niks
@@ -25,21 +30,26 @@ bootstrap it.
 
     cd ~/niks
     nix build --extra-experimental-features "nix-command flakes" .\#darwinConfigurations.<hostname>.system
-    ./result/sw/bin/darwin-rebuild switch --flake .
-
-nix-darwin also manages Homebrew, but this must be installed before this will work.
-
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 If this fails, you probably don't have a `/run` directory. macOS has a
 read-only root directory, so you'll need to run the following. The following
-only applies on macOS Big Sur (11) or later.
+only applies on macOS Big Sur (macOS 11) or later.
 
     printf 'run\tprivate/var/run\n' | sudo tee -a /etc/synthetic.conf
     /System/Library/Filesystems/apfs.fs/Contents/Resources/apfs.util -t
 
-Afterwards, you can update the configuration by running the following using the
-repository root as your working directory.
+Now you should be able to run the `nix build` command again and have it
+complete successfully.
+
+The bootstrap process creates a `darwin-rebuild` binary that you can then use
+to initially install the flake. This will correctly select the correct
+configuration based on you hostname, just like the NixOS command.
+
+    ./result/sw/bin/darwin-rebuild switch --flake .
+
+After this, the `darwin-rebuild` binary should be in your PATH, so you can just
+run the following to update your system after making changes to the
+configuration.
 
     darwin-rebuild switch --flake .
 

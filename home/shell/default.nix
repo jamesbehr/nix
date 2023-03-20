@@ -23,6 +23,18 @@
     e = "editor";
   };
 
+  programs.ssh = {
+    enable = true;
+    matchBlocks = {
+      "*" = {
+        extraOptions = {
+          IgnoreUnknown = "UseKeyChain";
+          UseKeychain = "yes";
+        };
+      };
+    };
+  };
+
   programs.zsh = {
     enable = true;
     autocd = true;
@@ -31,6 +43,7 @@
       extended = true;
       expireDuplicatesFirst = true;
     };
+    defaultKeymap = "viins";
     initExtra = ''
       # Allow backspace/CTRL-H to delete past the point insert mode was entered
       bindkey -M viins '^?' backward-delete-char
