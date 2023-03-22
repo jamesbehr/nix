@@ -102,6 +102,7 @@
                 docker.enable = true;
                 ruby.enable = true;
                 nix.enable = true;
+                scala.enable = true;
               };
             };
           }

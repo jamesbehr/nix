@@ -51,6 +51,9 @@ return require('packer').startup(function(use)
     use({"akinsho/bufferline.nvim", tag = "v2.*", requires = "kyazdani42/nvim-web-devicons"})
     use("lewis6991/gitsigns.nvim")
 
+    -- Other
+    use({'scalameta/nvim-metals', requires = "nvim-lua/plenary.nvim"})
+
     if packer_bootstrap then
         require("packer").sync()
     end

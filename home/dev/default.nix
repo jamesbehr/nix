@@ -13,6 +13,7 @@
     ./docker.nix
     ./terraform.nix
     ./qmk.nix
+    ./scala.nix
   ];
 }
 
