@@ -44,6 +44,10 @@
                 ./home/desktop
               ];
               home.stateVersion = "22.05";
+              jb.user = {
+                name = "James Behr";
+                email = "jamesbehr@gmail.com";
+              };
               jb.dev = {
                 haskell.enable = true;
                 go.enable = true;
@@ -89,6 +93,10 @@
                 ./home/firefox
               ];
               home.stateVersion = "22.05";
+              jb.user = {
+                name = "James Behr";
+                email = "james.behr@takealot.com";
+              };
               jb.dev = {
                 terraform.enable = true;
                 docker.enable = true;
