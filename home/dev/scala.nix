@@ -1,10 +1,10 @@
 { config, lib, pkgs, ... }:
 
 with lib;
-let cfg = config.jb.dev.scala;
+let cfg = config.niks.dev.scala;
 in
 {
-  options.jb.dev.scala = { enable = mkEnableOption "scala configuration"; };
+  options.niks.dev.scala = { enable = mkEnableOption "scala configuration"; };
 
   config = mkIf cfg.enable {
     home = {
@@ -15,10 +15,6 @@ in
         scalafmt
         coursier
       ];
-
-      shellAliases = {
-        scala = "scala-cli";
-      };
     };
   };
 }

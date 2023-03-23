@@ -1,10 +1,10 @@
 { config, lib, pkgs, ... }:
 
 with lib;
-let cfg = config.jb.dev.python;
+let cfg = config.niks.dev.python;
 in
 {
-  options.jb.dev.python = { enable = mkEnableOption "python configuration"; };
+  options.niks.dev.python = { enable = mkEnableOption "python configuration"; };
 
   config = mkIf cfg.enable {
     home = {

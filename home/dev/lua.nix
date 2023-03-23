@@ -1,10 +1,10 @@
 { config, lib, pkgs, ... }:
 
 with lib;
-let cfg = config.jb.dev.lua;
+let cfg = config.niks.dev.lua;
 in
 {
-  options.jb.dev.lua = { enable = mkEnableOption "lua configuration"; };
+  options.niks.dev.lua = { enable = mkEnableOption "lua configuration"; };
 
   config = mkIf cfg.enable {
     home = {

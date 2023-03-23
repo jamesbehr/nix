@@ -1,10 +1,10 @@
 { config, lib, pkgs, ... }:
 
 with lib;
-let cfg = config.jb.dev.docker;
+let cfg = config.niks.dev.docker;
 in
 {
-  options.jb.dev.docker = { enable = mkEnableOption "docker configuration"; };
+  options.niks.dev.docker = { enable = mkEnableOption "docker configuration"; };
 
   config = mkIf cfg.enable {
     home = {

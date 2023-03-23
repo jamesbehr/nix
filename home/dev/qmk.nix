@@ -1,10 +1,10 @@
 { config, lib, pkgs, ... }:
 
 with lib;
-let cfg = config.jb.dev.qmk;
+let cfg = config.niks.dev.qmk;
 in
 {
-  options.jb.dev.qmk = { enable = mkEnableOption "qmk configuration"; };
+  options.niks.dev.qmk = { enable = mkEnableOption "qmk configuration"; };
 
   config = mkIf cfg.enable {
     home = {

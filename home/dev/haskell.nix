@@ -1,10 +1,10 @@
 { config, lib, pkgs, ... }:
 
 with lib;
-let cfg = config.jb.dev.haskell;
+let cfg = config.niks.dev.haskell;
 in
 {
-  options.jb.dev.haskell = { enable = mkEnableOption "haskell configuration"; };
+  options.niks.dev.haskell = { enable = mkEnableOption "haskell configuration"; };
 
   config = mkIf cfg.enable {
     home = {

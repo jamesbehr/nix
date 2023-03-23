@@ -1,10 +1,10 @@
 { config, lib, pkgs, ... }:
 
 with lib;
-let cfg = config.jb.dev.nix;
+let cfg = config.niks.dev.nix;
 in
 {
-  options.jb.dev.nix = { enable = mkEnableOption "nix configuration"; };
+  options.niks.dev.nix = { enable = mkEnableOption "nix configuration"; };
 
   config = mkIf cfg.enable {
     home = {

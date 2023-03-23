@@ -1,10 +1,10 @@
 { config, lib, pkgs, ... }:
 
 with lib;
-let cfg = config.jb.dev.c;
+let cfg = config.niks.dev.c;
 in
 {
-  options.jb.dev.c = { enable = mkEnableOption "C/C++ configuration"; };
+  options.niks.dev.c = { enable = mkEnableOption "C/C++ configuration"; };
 
   config = mkIf cfg.enable {
     home = {

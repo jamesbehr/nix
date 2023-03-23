@@ -1,10 +1,10 @@
 { config, lib, pkgs, ... }:
 
 with lib;
-let cfg = config.jb.dev.go;
+let cfg = config.niks.dev.go;
 in
 {
-  options.jb.dev.go = { enable = mkEnableOption "go configuration"; };
+  options.niks.dev.go = { enable = mkEnableOption "go configuration"; };
 
   config = mkIf cfg.enable {
     home = {

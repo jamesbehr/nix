@@ -1,10 +1,10 @@
 { config, lib, pkgs, ... }:
 
 with lib;
-let cfg = config.jb.dev.node;
+let cfg = config.niks.dev.node;
 in
 {
-  options.jb.dev.node = { enable = mkEnableOption "node configuration"; };
+  options.niks.dev.node = { enable = mkEnableOption "node configuration"; };
 
   config = mkIf cfg.enable {
     home = {

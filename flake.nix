@@ -44,11 +44,11 @@
                 ./home/desktop
               ];
               home.stateVersion = "22.05";
-              jb.user = {
+              niks.user = {
                 name = "James Behr";
                 email = "jamesbehr@gmail.com";
               };
-              jb.dev = {
+              niks.dev = {
                 haskell.enable = true;
                 go.enable = true;
                 python.enable = true;
@@ -93,11 +93,11 @@
                 ./home/firefox
               ];
               home.stateVersion = "22.05";
-              jb.user = {
+              niks.user = {
                 name = "James Behr";
                 email = "james.behr@takealot.com";
               };
-              jb.dev = {
+              niks.dev = {
                 terraform.enable = true;
                 docker.enable = true;
                 ruby.enable = true;

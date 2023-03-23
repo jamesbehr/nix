@@ -1,10 +1,10 @@
 { config, lib, pkgs, ... }:
 
 with lib;
-let cfg = config.jb.dev.ruby;
+let cfg = config.niks.dev.ruby;
 in
 {
-  options.jb.dev.ruby = { enable = mkEnableOption "ruby configuration"; };
+  options.niks.dev.ruby = { enable = mkEnableOption "ruby configuration"; };
 
   config = mkIf cfg.enable {
     home = {

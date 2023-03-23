@@ -1,10 +1,10 @@
 { config, lib, pkgs, ... }:
 
 with lib;
-let cfg = config.jb.dev.terraform;
+let cfg = config.niks.dev.terraform;
 in
 {
-  options.jb.dev.terraform = { enable = mkEnableOption "terraform configuration"; };
+  options.niks.dev.terraform = { enable = mkEnableOption "terraform configuration"; };
 
   config = mkIf cfg.enable {
     home = {

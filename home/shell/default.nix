@@ -1,10 +1,10 @@
 { pkgs, lib, inputs, system, config, ... }:
 
 with lib;
-let user = config.jb.user;
+let user = config.niks.user;
 in
 {
-  options.jb.user = {
+  options.niks.user = {
     name = mkOption {
       type = types.str;
       description = "The user's name";
