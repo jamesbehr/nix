@@ -1,5 +1,6 @@
-# Nix System configuration
-My system configuration and dotfiles for my Unix systems.
+# Niks
+Declarative system configuration and dotfile management for all of my machines
+using Nix.
 
 ## Installation
 ### NixOS
@@ -99,3 +100,4 @@ flash drive.
 - https://github.com/sherubthakur/dotfiles
 - https://github.com/Misterio77/nix-starter-configs
 - https://github.com/danielphan2003/flk
+- https://github.com/davidtwco/veritas
