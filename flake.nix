@@ -100,6 +100,8 @@
               niks.dev = {
                 terraform.enable = true;
                 docker.enable = true;
+                k8s.enable = true;
+                gcp.enable = true;
                 ruby.enable = true;
                 nix.enable = true;
                 scala.enable = true;
