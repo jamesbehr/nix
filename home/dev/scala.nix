@@ -10,10 +10,11 @@ in
     home = {
       packages = with pkgs; [
         scala-cli
-        sbt
         metals
         scalafmt
         coursier
+        jdk11
+        (sbt.override { jre = pkgs.jdk11; })
       ];
     };
   };
