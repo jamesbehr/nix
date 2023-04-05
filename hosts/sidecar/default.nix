@@ -20,7 +20,7 @@
     enable = true;
     onActivation.autoUpdate = true;
     brews = [ ];
-    casks = [ "discord" ];
+    casks = [ "obs" "docker" ];
   };
 
   system = {
