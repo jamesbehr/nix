@@ -99,8 +99,7 @@ in
         dc = "diff --cached";
         fa = "fetch --all";
         pf = "push --force-with-lease";
-        wt = "worktree";
-        cl = "clone --bare";
+        cl = "clone";
         amend = "commit --amend";
       };
       extraConfig = {
