@@ -16,6 +16,13 @@
 
   services.lorri.enable = true;
 
+  environment.systemPackages = with pkgs; [
+    coreutils
+    findutils
+    gnugrep
+    gnused
+  ];
+
   homebrew = {
     enable = true;
     onActivation.autoUpdate = true;
