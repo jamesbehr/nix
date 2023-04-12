@@ -73,7 +73,7 @@ in
     };
 
     programs.bat.enable = true;
-    programs.autojump.enable = true;
+    programs.zoxide.enable = true;
     programs.fzf.enable = true;
     programs.jq.enable = true;
 
