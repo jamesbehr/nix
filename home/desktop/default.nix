@@ -10,7 +10,7 @@
     yabridgectl
     mplayer
     ghidra-bin
-    wine
+    wineWowPackages.stable
     winetricks
     deluge
     inkscape
