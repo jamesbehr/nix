@@ -9,6 +9,15 @@ run the following using the repository root as your working directory.
 
     sudo nixos-rebuild switch --flake .
 
+You should also remove old generations periodically, to avoid using up all your disk space.
+The simplest way to do this is with the `nix-collect-garbage` utility
+For example, to delete the generations older than 30 days, and then run the
+garbage collector on the Nix store, you can run the following.
+
+    nix-collect-garbage --delete-older-than 30d
+
+This should be done before `nixos-rebuild switch`.
+
 ### macOS
 To get started, an installation of Nix is required.
 
