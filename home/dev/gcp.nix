@@ -9,10 +9,12 @@ in
   config = mkIf cfg.enable {
     home = {
       packages = with pkgs; [
-        google-cloud-sdk
+        (google-cloud-sdk.withExtraComponents [ google-cloud-sdk.components.gke-gcloud-auth-plugin ])
       ];
 
-      sessionVariables = { };
+      sessionVariables = {
+        USE_GKE_GCLOUD_AUTH_PLUGIN = "True"; # remove after kubectl v1.26
+      };
 
       sessionPath = [ ];
 
