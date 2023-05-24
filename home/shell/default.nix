@@ -123,7 +123,7 @@ in
         # Clone shorthands e.g. git clone gh:NixOS/nix -> git clone ssh://git@github.com/NixOS/nix
         url = {
           "ssh://git@github.com/" = {
-            insteadOf = [ "github:" "gh:" ];
+            insteadOf = [ "github:" "gh:" "git://github.com/" ];
           };
         };
       };
