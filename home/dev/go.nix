@@ -12,6 +12,7 @@ in
         go
         go-tools
         gopls
+        gotestsum
       ];
 
       sessionVariables = {
