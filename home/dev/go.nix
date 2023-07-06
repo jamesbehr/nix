@@ -16,12 +16,12 @@ in
       ];
 
       sessionVariables = {
-        GOPATH = "${config.xdg.dataHome}/go";
-        GOBIN = "${config.xdg.dataHome}/go/bin";
+        GOPATH = "${config.home.homeDirectory}/go";
+        GOBIN = "${config.home.homeDirectory}/go/bin";
       };
 
       sessionPath = [
-        "${config.xdg.dataHome}/go/bin"
+        "${config.home.homeDirectory}/go/bin"
       ];
     };
   };
