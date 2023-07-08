@@ -19,9 +19,9 @@ Check that the end of the drive is zeroed.
 Mount a plain encrypted LUKS container to the device and zero it out. This
 writes random data to the drive.
 
-    cryptsetup open --type plain --key-file /dev/urandom to_be_wiped
+    cryptsetup open --type plain --key-file /dev/urandom /dev/nvme0n1 to_be_wiped
     dd if=/dev/zero of=/dev/mapper/to_be_wiped status=progress bs=1M
-    cryptsetup close to_be_wuped
+    cryptsetup close to_be_wiped
 
 Check that the zeroes were overwritten with random data.
 

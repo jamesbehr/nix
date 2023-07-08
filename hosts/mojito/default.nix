@@ -6,7 +6,20 @@
       (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
-  boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "nvme" "usb_storage" "usbhid" "sd_mod" "sdhci_pci" ];
+  boot.initrd.availableKernelModules = [
+    "xhci_pci"
+    "ahci"
+    "nvme"
+    "usb_storage"
+    "usbhid"
+    "sd_mod"
+    "sdhci_pci"
+    "uas"
+    "usbcore"
+    "vfat"
+    "nls_cp437"
+    "nls_iso8859_1"
+  ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" "i2c-dev" ];
   boot.extraModulePackages = [ ];
@@ -18,7 +31,29 @@
       options = [ "subvol=root" "noatime" ];
     };
 
-  boot.initrd.luks.devices."root".device = "/dev/disk/by-label/root";
+  boot.initrd.postDeviceCommands = pkgs.lib.mkBefore ''
+    mkdir -m 0755 -p /key
+    sleep 2 # To make sure the usb key has been loaded
+    mount -n -t vfat -o ro /dev/disk/by-label/usbkey /key
+  '';
+
+  boot.initrd.luks.devices."root" = {
+    keyFile = "/key/root.key";
+    preLVM = false;
+    device = "/dev/disk/by-label/root";
+  };
+
+  boot.initrd.luks.devices."sata" = {
+    keyFile = "/key/sata.key";
+    preLVM = false;
+    device = "/dev/disk/by-label/sata";
+  };
+
+  fileSystems."/mnt/media" =
+    {
+      device = "/dev/disk/by-label/media";
+      fsType = "ext4";
+    };
 
   fileSystems."/home" =
     {
@@ -107,8 +142,10 @@
       "james"
     ];
   };
+
   services.udev.extraRules = ''
     KERNEL=="i2c-[0-9]*", GROUP="i2c", MODE="0660"
+    KERNEL=="uinput", GROUP="input", MODE="0660"
   '';
 
   services.sonarr = {
@@ -191,7 +228,7 @@
   # services.openssh.enable = true;
 
   # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
+  # networking.firewall.allowedTCPPorts = [ ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
