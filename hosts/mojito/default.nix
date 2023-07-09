@@ -133,6 +133,7 @@
       "radarr"
       "plex"
       "james"
+      "nzbget"
     ];
   };
 
@@ -147,6 +148,11 @@
     KERNEL=="i2c-[0-9]*", GROUP="i2c", MODE="0660"
     KERNEL=="uinput", GROUP="input", MODE="0660"
   '';
+
+  services.nzbget = {
+    enable = true;
+    group = "media";
+  };
 
   services.sonarr = {
     enable = true;
