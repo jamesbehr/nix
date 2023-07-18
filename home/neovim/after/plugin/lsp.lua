@@ -46,7 +46,7 @@ local on_attach = function (client, bufnr)
         buffer = bufnr,
         callback = function ()
             organize_imports(client, 1001)
-            vim.lsp.buf.formatting_sync(nil, 1000)
+            vim.lsp.buf.format({async=false})
         end,
     })
 end

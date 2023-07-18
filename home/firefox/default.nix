@@ -4,10 +4,6 @@
   programs.firefox = {
     enable = true;
     package = if pkgs.stdenv.isLinux then pkgs.firefox else pkgs.firefox-bin;
-    extensions = with pkgs.nur.repos.rycee.firefox-addons; [
-      ublock-origin
-      bitwarden
-    ];
     profiles = {
       default = {
         id = 0;
@@ -20,6 +16,10 @@
           "signon.rememberSignons" = false; # Don't ask to save passwords
           "media.eme.enabled" = true; # Enable DRM
         };
+        extensions = with pkgs.nur.repos.rycee.firefox-addons; [
+          ublock-origin
+          bitwarden
+        ];
       };
     };
   };
