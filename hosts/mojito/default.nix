@@ -131,6 +131,9 @@
   services.blueman.enable = true;
   hardware.bluetooth.enable = true;
 
+  # Virtualization
+  virtualisation.docker.enable = true;
+
   users.groups.media = {
     members = [
       "jackett"
@@ -208,7 +211,7 @@
 
   users.users.james = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" "jackaudio" "dialout" ];
+    extraGroups = [ "wheel" "networkmanager" "jackaudio" "dialout" "docker" ];
     description = "James";
     shell = pkgs.zsh;
   };
