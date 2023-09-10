@@ -5,6 +5,7 @@ if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
     vim.cmd [[packadd packer.nvim]]
 end
 
+        require('textcase').setup {}
 return require('packer').startup(function(use)
     -- Core
     use("wbthomason/packer.nvim")
@@ -30,6 +31,13 @@ return require('packer').startup(function(use)
 
     -- Comment
     use("numToStr/Comment.nvim")
+
+    -- Helpers
+    use { "johmsalas/text-case.nvim",
+      config = function()
+        require('textcase').setup {}
+      end
+    }
 
     -- Snippets
     use("L3MON4D3/LuaSnip")
