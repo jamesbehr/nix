@@ -86,7 +86,7 @@ in
       # TODO: Theme
     };
 
-    home.packages = with pkgs; [ git-open unzip p7zip ffmpeg tree age killall graphviz imagemagick ];
+    home.packages = with pkgs; [ git-open unzip p7zip ffmpeg tree age killall graphviz imagemagick asciinema ];
 
     programs.git = {
       enable = true;
