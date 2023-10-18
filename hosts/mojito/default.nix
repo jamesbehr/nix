@@ -1,4 +1,4 @@
-{ config, pkgs, modulesPath, lib, ... }:
+{ config, pkgs, modulesPath, lib, nixpkgs, ... }:
 
 {
   imports =
@@ -103,7 +103,20 @@
       dates = "weekly";
       options = "--delete-older-than 30d";
     };
+
+    # For compatibility with nix-shell, nix-build, etc.
+    nixPath = [
+      "nixpkgs=/etc/nixpkgs"
+      "/nix/var/nix/profiles/per-user/root/channels"
+    ];
+
+    registry.nixpkgs.flake = nixpkgs;
   };
+
+  # Pass flake nixpkgs through to /etc/nixpkgs
+  environment.etc.nixpkgs.source = nixpkgs;
+
+  systemd.services.NetworkManager-wait-online.enable = false;
 
   # Networking
   networking.hostName = "mojito";
