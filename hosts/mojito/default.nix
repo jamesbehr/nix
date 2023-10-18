@@ -181,6 +181,8 @@
     openFirewall = true;
   };
 
+  services.k3s.enable = true;
+
   # Configure keymap in X11
   # services.xserver.layout = "us";
   # services.xserver.xkbOptions = {
@@ -226,9 +228,14 @@
   environment.systemPackages = with pkgs; [
     wget
     ddcutil
+    man-pages
+    man-pages-posix
   ];
 
   nixpkgs.config.allowUnfree = true;
+
+  documentation.dev.enable = true;
+  documentation.man.generateCaches = true;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
