@@ -16,6 +16,7 @@
     ./terraform.nix
     ./qmk.nix
     ./scala.nix
+    ./rust.nix
   ];
 }
 

@@ -53,6 +53,7 @@
                 haskell.enable = true;
                 go.enable = true;
                 python.enable = true;
+                rust.enable = true;
                 node.enable = true;
                 lua.enable = true;
                 terraform.enable = true;
