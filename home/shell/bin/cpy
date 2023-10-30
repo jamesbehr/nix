@@ -1,0 +1,10 @@
+#!/usr/bin/env sh
+if command -v wl-copy >/dev/null 2>&1; then
+    wl-copy 2>/dev/null
+elif command -v pbcopy >/dev/null 2>&1; then
+    pbcopy
+elif command -v xsel >/dev/null 2>&1; then
+    xsel -ib
+else
+    exit 1
+fi

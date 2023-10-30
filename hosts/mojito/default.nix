@@ -134,11 +134,14 @@
   # };
 
   # Enable the X11 windowing system.
-  services.xserver.enable = true;
-  services.xserver.displayManager.sddm.enable = true;
-  services.xserver.desktopManager.plasma5.enable = true;
-  services.xserver.windowManager.xmonad.enable = true;
-  services.xserver.windowManager.i3.enable = true;
+  services.xserver = {
+    enable = true;
+    displayManager.gdm.enable = true;
+    desktopManager.gnome.enable = true;
+  };
+
+  programs.hyprland.enable = true;
+
   services.gnome.at-spi2-core.enable = true;
   services.dbus.enable = true;
   services.blueman.enable = true;

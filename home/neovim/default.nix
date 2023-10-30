@@ -6,7 +6,7 @@ let shellAliases = {
   vimdiff = "nvim -d";
 }; in
 {
-  home.packages = with pkgs; [ neovim ripgrep xsel ];
+  home.packages = with pkgs; [ neovim ripgrep ];
 
   xdg.configFile = {
     "nvim/init.lua" = {
