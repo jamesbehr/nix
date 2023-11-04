@@ -34,25 +34,29 @@
   boot.initrd.postDeviceCommands = pkgs.lib.mkBefore ''
     mkdir -m 0755 -p /key
     sleep 2 # To make sure the usb key has been loaded
-    mount -n -t vfat -o ro /dev/disk/by-label/usbkey /key
+    mount -n -t vfat -o ro,nofail /dev/disk/by-label/usbkey /key
   '';
 
   boot.initrd.luks.devices."root" = {
     keyFile = "/key/root.key";
     preLVM = false;
     device = "/dev/disk/by-label/root";
+    fallbackToPassword = true;
   };
 
   boot.initrd.luks.devices."sata" = {
     keyFile = "/key/sata.key";
     preLVM = false;
     device = "/dev/disk/by-label/sata";
+    fallbackToPassword = true;
+    crypttabExtraOpts = [ "nofail" ];
   };
 
   fileSystems."/mnt/media" =
     {
       device = "/dev/disk/by-label/media";
       fsType = "ext4";
+      options = [ "nofail" ];
     };
 
   fileSystems."/home" =
@@ -210,19 +214,26 @@
   # services.printing.enable = true;
 
   # Enable sound.
-  sound.enable = true;
-  hardware.pulseaudio.enable = true;
-
-  services.jack = {
-    jackd = {
-      enable = true;
-      extraOptions = [ "-dalsa" "-dhw:CODEC,0" "-r48000" "-p64" "-n2" ];
-    };
-    alsa.enable = false;
-    loopback = {
-      enable = true;
-    };
+  security.rtkit.enable = true;
+  hardware.pulseaudio.enable = false;
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+    jack.enable = true;
   };
+
+  # services.jack = {
+  #   jackd = {
+  #     enable = true;
+  #     extraOptions = [ "-dalsa" "-dhw:CODEC,0" "-r48000" "-p64" "-n2" ];
+  #   };
+  #   alsa.enable = false;
+  #   loopback = {
+  #     enable = true;
+  #   };
+  # };
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
