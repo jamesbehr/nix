@@ -31,25 +31,29 @@
       options = [ "subvol=root" "noatime" ];
     };
 
-  boot.initrd.postDeviceCommands = pkgs.lib.mkBefore ''
-    mkdir -m 0755 -p /key
-    sleep 2 # To make sure the usb key has been loaded
-    mount -n -t vfat -o ro,nofail /dev/disk/by-label/usbkey /key
-  '';
+  boot.initrd.systemd = {
+    enable = true;
+    mounts = [
+      {
+        what = "/dev/disk/by-label/usbkey";
+        where = "/key";
+        type = "vfat";
+        options = "ro,nofail";
+      }
+    ];
+  };
 
   boot.initrd.luks.devices."root" = {
     keyFile = "/key/root.key";
-    preLVM = false;
     device = "/dev/disk/by-label/root";
-    fallbackToPassword = true;
+    keyFileTimeout = 10;
   };
 
   boot.initrd.luks.devices."sata" = {
     keyFile = "/key/sata.key";
-    preLVM = false;
     device = "/dev/disk/by-label/sata";
-    fallbackToPassword = true;
     crypttabExtraOpts = [ "nofail" ];
+    keyFileTimeout = 10;
   };
 
   fileSystems."/mnt/media" =
