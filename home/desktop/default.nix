@@ -21,6 +21,15 @@ in
     wl-clipboard
   ];
 
+  # Start tray.target unit, which is needed for many services
+  # See https://github.com/nix-community/home-manager/issues/2064
+  systemd.user.targets.tray = {
+    Unit = {
+      Description = "Home Manager System Tray";
+      Requires = [ "graphical-session-pre.target" ];
+    };
+  };
+
   services = {
     network-manager-applet = {
       enable = true;
@@ -68,6 +77,10 @@ in
           "tray"
           "clock"
         ];
+
+        "clock" = {
+          "tooltip-format" = "<tt><small>{calendar}</small></tt>";
+        };
       };
     };
   };
@@ -78,6 +91,8 @@ in
       bind = [
         "SUPER,Return,exec,kitty"
         "SUPER,Space,exec,rofi -show drun"
+        "SUPER,c,killactive"
+        "SUPER SHIFT,q,exit"
       ] ++
       (map (n: "SUPER, ${n}, workspace, ${n}") workspaces) ++
       (map (n: "SUPER SHIFT, ${n}, movetoworkspace, ${n}") workspaces);
