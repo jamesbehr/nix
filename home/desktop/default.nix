@@ -5,7 +5,6 @@ let
 in
 {
   home.packages = with pkgs; [
-    spotdl
     audacity
     reaper
     yabridge
