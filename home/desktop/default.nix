@@ -90,7 +90,7 @@ in
       bind = [
         "SUPER,Return,exec,kitty"
         "SUPER,Space,exec,rofi -show drun"
-        "SUPER,c,killactive"
+        "SUPER SHIFT,c,killactive"
         "SUPER SHIFT,q,exit"
       ] ++
       (map (n: "SUPER, ${n}, workspace, ${n}") workspaces) ++
