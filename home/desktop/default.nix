@@ -107,6 +107,9 @@ in
         gaps_in = 5;
         gaps_out = 10;
       };
+      input = {
+        follow_mouse = 2;
+      };
       misc = {
         disable_hyprland_logo = true;
       };
