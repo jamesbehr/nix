@@ -119,6 +119,9 @@ in
         commit = {
           verbose = true;
         };
+        diff = {
+          tool = "vimdiff";
+        };
 
         # Clone shorthands e.g. git clone gh:NixOS/nix -> git clone ssh://git@github.com/NixOS/nix
         url = {
