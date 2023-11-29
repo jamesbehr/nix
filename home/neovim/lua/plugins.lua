@@ -5,7 +5,6 @@ if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
     vim.cmd [[packadd packer.nvim]]
 end
 
-        require('textcase').setup {}
 return require('packer').startup(function(use)
     -- Core
     use("wbthomason/packer.nvim")
