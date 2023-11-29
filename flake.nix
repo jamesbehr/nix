@@ -56,7 +56,7 @@
                 rust.enable = true;
                 node.enable = true;
                 lua.enable = true;
-                terraform.enable = true;
+                terraform.enable = false;
                 c.enable = true;
                 nix.enable = true;
                 qmk.enable = true;
@@ -100,7 +100,7 @@
                 email = "james.behr@takealot.com";
               };
               niks.dev = {
-                terraform.enable = true;
+                terraform.enable = false;
                 docker.enable = true;
                 k8s.enable = true;
                 gcp.enable = true;
