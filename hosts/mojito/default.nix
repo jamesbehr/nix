@@ -150,10 +150,15 @@
 
   programs.hyprland.enable = true;
 
+  # Allow Swaylock to work on Hyprland
+  security.pam.services.swaylock = { };
+
   services.gnome.at-spi2-core.enable = true;
   services.dbus.enable = true;
   services.blueman.enable = true;
   hardware.bluetooth.enable = true;
+
+  services.flatpak.enable = true;
 
   # Virtualization
   virtualisation.docker.enable = true;

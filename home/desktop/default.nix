@@ -92,13 +92,10 @@ in
         "SUPER,Space,exec,rofi -show drun"
         "SUPER SHIFT,c,killactive"
         "SUPER SHIFT,q,exit"
+        "SUPER SHIFT,l,exec,pkill --signal SIGUSR1 swayidle"
       ] ++
       (map (n: "SUPER, ${n}, workspace, ${n}") workspaces) ++
       (map (n: "SUPER SHIFT, ${n}, movetoworkspace, ${n}") workspaces);
-      monitor = [
-        "DP-1, 1920x1080, 1920x0, 1"
-        "DP-3, 1920x1080, 0, 1"
-      ];
       exec-once = [
         "wpaperd"
         "waybar"
@@ -114,6 +111,21 @@ in
         disable_hyprland_logo = true;
       };
     };
+  };
+
+  services.swayidle = {
+    enable = true;
+    timeouts = [
+      {
+        timeout = 300;
+        command = "${pkgs.swaylock}/bin/swaylock -f -c 000000";
+      }
+      {
+        timeout = 600;
+        command = "${pkgs.hyprland}/bin/hyprctl dispatch dpms off";
+        resumeCommand = "${pkgs.hyprland}/bin/hyprctl dispatch dpms on";
+      }
+    ];
   };
 
   programs.rofi.enable = true;
