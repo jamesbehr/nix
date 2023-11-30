@@ -93,6 +93,10 @@ in
         "SUPER SHIFT,c,killactive"
         "SUPER SHIFT,q,exit"
         "SUPER SHIFT,l,exec,pkill --signal SIGUSR1 swayidle"
+        "SUPER,h,movecurrentworkspacetomonitor,l"
+        "SUPER,j,movecurrentworkspacetomonitor,d"
+        "SUPER,k,movecurrentworkspacetomonitor,u"
+        "SUPER,l,movecurrentworkspacetomonitor,r"
       ] ++
       (map (n: "SUPER, ${n}, workspace, ${n}") workspaces) ++
       (map (n: "SUPER SHIFT, ${n}, movetoworkspace, ${n}") workspaces);
