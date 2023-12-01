@@ -97,6 +97,8 @@ in
         "SUPER,j,movecurrentworkspacetomonitor,d"
         "SUPER,k,movecurrentworkspacetomonitor,u"
         "SUPER,l,movecurrentworkspacetomonitor,r"
+        "SUPER,F1,exec,ddcutil --bus 8 --async setvcp 60 0x1b && ddcutil --bus 7 --async setvcp 60 0x11"
+        "SUPER,F2,exec,ddcutil --bus 8 --async setvcp 60 0x11 && ddcutil --bus 7 --async setvcp 60 0x1b"
       ] ++
       (map (n: "SUPER, ${n}, workspace, ${n}") workspaces) ++
       (map (n: "SUPER SHIFT, ${n}, movetoworkspace, ${n}") workspaces);
