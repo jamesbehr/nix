@@ -6,3 +6,6 @@ for editor in "$EDITOR" nvim vim vi nano; do
         exec "$editor" "$@"
     fi
 done
+
+echo "No suitable editor found"
+exit 1

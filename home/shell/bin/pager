@@ -6,3 +6,6 @@ for pager in "$PAGER" less more; do
         exec "$pager" "$@"
     fi
 done
+
+echo "No suitable pager found"
+exit 1

@@ -6,3 +6,6 @@ for terminal in "$TERMINAL" kitty xterm; do
         exec "$terminal" "$@"
     fi
 done
+
+echo "No suitable terminal found"
+exit 1

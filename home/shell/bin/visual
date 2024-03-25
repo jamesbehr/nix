@@ -6,3 +6,6 @@ for visual in "$VISUAL" nvim vim vi nano; do
         exec "$visual" "$@"
     fi
 done
+
+echo "No suitable visual editor found"
+exit 1
