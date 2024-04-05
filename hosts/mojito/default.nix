@@ -169,6 +169,7 @@
       "sonarr"
       "radarr"
       "plex"
+      "jellyfin"
       "james"
       "nzbget"
     ];
@@ -210,7 +211,10 @@
     openFirewall = true;
   };
 
-  services.k3s.enable = true;
+  services.jellyfin = {
+    enable = true;
+    openFirewall = true;
+  };
 
   # Configure keymap in X11
   # services.xserver.layout = "us";
