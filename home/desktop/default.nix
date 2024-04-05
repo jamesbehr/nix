@@ -144,6 +144,6 @@ in
 
   services.fluidsynth = {
     enable = true;
-    soundService = "pulseaudio";
+    soundService = "pipewire-pulse";
   };
 }
