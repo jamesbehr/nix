@@ -100,7 +100,7 @@
                 email = "james.behr@takealot.com";
               };
               niks.dev = {
-                terraform.enable = false;
+                terraform.enable = true;
                 docker.enable = true;
                 k8s.enable = true;
                 gcp.enable = true;
