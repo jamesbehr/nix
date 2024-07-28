@@ -13,6 +13,7 @@
     ./docker.nix
     ./k8s.nix
     ./gcp.nix
+    ./aws.nix
     ./terraform.nix
     ./qmk.nix
     ./scala.nix
