@@ -52,11 +52,12 @@
               niks.dev = {
                 haskell.enable = true;
                 go.enable = true;
+                aws.enable = true;
                 python.enable = true;
                 rust.enable = true;
                 node.enable = true;
                 lua.enable = true;
-                terraform.enable = false;
+                terraform.enable = true;
                 c.enable = true;
                 nix.enable = true;
                 qmk.enable = true;
