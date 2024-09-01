@@ -32,7 +32,7 @@
     enable = true;
     onActivation.autoUpdate = true;
     brews = [ ];
-    casks = [ "obs" "docker" ];
+    casks = [ "obs" "docker" "firefox" ];
   };
 
   system = {

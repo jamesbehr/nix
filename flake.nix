@@ -83,7 +83,6 @@
           {
             nixpkgs.overlays = [
               nur.overlay
-              (import overlays/firefox.nix)
             ];
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;

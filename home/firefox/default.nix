@@ -3,7 +3,8 @@
 {
   programs.firefox = {
     enable = true;
-    package = if pkgs.stdenv.isLinux then pkgs.firefox else pkgs.firefox-bin;
+    # Firefox is installed via Homebrew on macOS
+    package = if pkgs.stdenv.isLinux then pkgs.firefox else null;
     profiles = {
       default = {
         id = 0;
