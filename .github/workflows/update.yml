@@ -27,14 +27,14 @@ jobs:
         id: commit
         run: |
           echo 'message<<PRMESSAGE' >> "${GITHUB_OUTPUT}"
-          git log -1 --pretty=%B | tail +3 >> "${GITHUB_OUTPUT}"
+          git log -1 --pretty=%B | tail +3 | awk -f ./scripts/flake-to-markdown.awk >> "${GITHUB_OUTPUT}"
           echo 'PRMESSAGE' >> "${GITHUB_OUTPUT}"
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v6
         with:
           title: Update flake.lock
-          body: "```${{ steps.commit.outputs.message }}```"
+          body: "${{ steps.commit.outputs.message }}"
           labels: automated
           branch: automated/update-flake
           delete-branch: true
