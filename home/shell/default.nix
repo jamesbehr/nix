@@ -84,8 +84,8 @@ in
       baseIndex = 1;
       keyMode = "vi";
       extraConfig = ''
-        bind-key -r f display-popup -E -E tmux-project-switch
-        bind-key -r F display-popup -E -E tmux-workspace-switch
+        bind-key -r C-f display-popup -E -E tmux-project-switch
+        bind-key -r C-w display-popup -E -E tmux-workspace-switch
 
         source-file ${pkgs.vimPlugins.nightfox-nvim}/extra/duskfox/duskfox.tmux
       '';

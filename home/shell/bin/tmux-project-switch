@@ -6,4 +6,37 @@ if [[ -z "$TMUX" ]]; then
     exit 1
 fi
 
-env "$(tmux show-environment TMUX_WORKSPACE)" tmux-project-switch-inner
+if [[ -z "$TMUX_WORKSPACE" ]]; then
+    echo 'Environment variable TMUX_WORKSPACE is not set'
+    exit 1
+fi
+
+function choices() {
+    echo root
+    find ~/workspaces/$TMUX_WORKSPACE -maxdepth 1 -mindepth 1 -type d -printf '%P\n'
+}
+
+selected="$(choices | fzf --exit-0 --expect enter,ctrl-r | paste -sd,)"
+
+case "$selected" in
+    ctrl-r,*|enter,root)
+        session="workspace/$TMUX_WORKSPACE/root"
+        directory="$HOME/workspaces/$TMUX_WORKSPACE"
+        ;;
+    enter,*)
+        project="$(echo $selected | cut -d, -f2 | tr ' .' _)"
+        session="workspace/$TMUX_WORKSPACE/$project"
+        directory="$HOME/workspaces/$TMUX_WORKSPACE/$project"
+        ;;
+esac
+
+if ! tmux has-session -t "$session" 2> /dev/null; then
+    tmux new-session -ds "$session" -c "$directory"
+    tmux set-environment -t "$session" TMUX_WORKSPACE "$TMUX_WORKSPACE"
+fi
+
+if [[ -z "$TMUX" ]]; then
+    tmux attach-session -t "$session"
+else
+    tmux switch-client -t "$session"
+fi
