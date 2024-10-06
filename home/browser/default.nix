@@ -1,6 +1,12 @@
 { pkgs, ... }:
 
 {
+  programs.chromium = {
+    enable = true;
+    # There is no Darwin package available
+    package = if pkgs.stdenv.isLinux then pkgs.google-chrome else null;
+  };
+
   programs.firefox = {
     enable = true;
     # Firefox is installed via Homebrew on macOS

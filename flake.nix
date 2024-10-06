@@ -39,7 +39,7 @@
               imports = [
                 ./home/neovim
                 ./home/shell
-                ./home/firefox
+                ./home/browser
                 ./home/terminal
                 ./home/dev
                 ./home/desktop
@@ -92,7 +92,7 @@
                 ./home/shell
                 ./home/dev
                 ./home/terminal
-                ./home/firefox
+                ./home/browser
               ];
               home.stateVersion = "22.05";
               niks.user = {
