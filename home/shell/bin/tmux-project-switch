@@ -1,0 +1,9 @@
+#!/usr/bin/env sh
+set -eo pipefail
+
+if [[ -z "$TMUX" ]]; then
+    echo "Must run from inside an existing session"
+    exit 1
+fi
+
+env "$(tmux show-environment TMUX_WORKSPACE)" tmux-project-switch-inner

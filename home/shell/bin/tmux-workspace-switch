@@ -1,0 +1,17 @@
+#!/usr/bin/env sh
+set -eo pipefail
+selected="$(find ~/workspaces -maxdepth 1 -mindepth 1 -type d -printf '%P\n' | fzf --exit-0)"
+workspace="$(echo $selected | tr ' .' _)"
+session="workspace/$workspace/root"
+directory="$HOME/workspaces/$selected"
+
+if ! tmux has-session -t "$session" 2> /dev/null; then
+    tmux new-session -ds "$session" -c "$directory"
+    tmux set-environment -t "$session" TMUX_WORKSPACE "$workspace"
+fi
+
+if [[ -z "$TMUX" ]]; then
+    tmux attach-session -t "$session"
+else
+    tmux switch-client -t "$session"
+fi

@@ -83,7 +83,10 @@ in
       escapeTime = 0;
       baseIndex = 1;
       keyMode = "vi";
-      # TODO: Theme
+      extraConfig = ''
+        bind-key -r f run-shell "tmux neww tmux-project-switch"
+        bind-key -r F run-shell "tmux neww tmux-workspace-switch"
+      '';
     };
 
     home.packages = with pkgs; [ git-open unzip p7zip ffmpeg tree age killall graphviz imagemagick asciinema yq-go ];
