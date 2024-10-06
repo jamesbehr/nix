@@ -99,12 +99,15 @@ in
       userName = user.name;
       aliases = {
         co = "checkout";
+        cof = "fuzzy-checkout";
         ci = "commit";
         di = "diff";
         dc = "diff --cached";
         fa = "fetch --all";
         pf = "push --force-with-lease";
         cl = "clone";
+        clr = "clone-to-repos";
+        wtaf = "in-chosen-repo worktree add";
         amend = "commit --amend";
       };
       extraConfig = {
