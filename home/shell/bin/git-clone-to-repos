@@ -1,0 +1,27 @@
+#!/usr/bin/env sh
+# Clone a repo to ~/git/repos
+
+set -eo pipefail
+
+if [[ $# -ne 1 ]]; then
+    echo "usage: $0 <url>"
+    exit 1
+fi
+
+if [[ ! -d ~/git/repos ]]; then
+    mkdir -p ~/git/repos
+fi
+
+# Clone to a temporary directory
+# tmp="$(tmktemp -u ~/git/repos/cloneXXXXXX)"
+tmp=~/git/repos/tmp
+git clone "$1" "$tmp"
+
+# Checkout a dummy orphaned branch so that this repo contains nothing.
+# This allows the worktree to be checked out elsewhere
+git -C "$tmp" switch --orphan worktree-dummy
+dir=~/git/repos/"$(git -C $tmp remote get-url origin | sed 's#\(ssh://git@\|https://\|git://\)##')"
+
+# Move the directory to the correct location
+mkdir -p "$(dirname $dir)"
+mv "$tmp" "$dir"

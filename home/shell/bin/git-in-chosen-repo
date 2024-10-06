@@ -1,0 +1,9 @@
+#!/usr/bin/env sh
+# Fuzzily pick a repo (using fzf), and then run a git command inside it.
+# This is kind of like git for-each-repo, but for a single repo from a known list.
+#
+# Add your repos to ~/git/repos with git clone-to-repos
+
+set -eo pipefail
+repo="$(find ~/git/repos -name '.git' -type d -printf '%P\n' | fzf --exit-0)"
+git --git-dir ~/git/repos/"$repo" "$@"
