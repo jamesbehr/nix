@@ -86,6 +86,8 @@ in
       extraConfig = ''
         bind-key -r f run-shell "tmux neww tmux-project-switch"
         bind-key -r F run-shell "tmux neww tmux-workspace-switch"
+
+        source-file ${pkgs.vimPlugins.nightfox-nvim}/extra/duskfox/duskfox.tmux
       '';
     };
 

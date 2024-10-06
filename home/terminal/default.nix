@@ -9,7 +9,8 @@
       size = 11;
     };
 
-    theme = "Tokyo Night"; # TODO: Pick a theme
+    # TODO: Switch to duskfox when it arrives in NixOS (it was already merged upstream)
+    themeFile = "Nightfox";
 
     settings = {
       enable_audio_bell = false;
