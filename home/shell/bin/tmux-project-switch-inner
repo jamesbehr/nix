@@ -6,10 +6,24 @@ if [[ -z "$TMUX_WORKSPACE" ]]; then
     exit 1
 fi
 
-selected="$(find ~/workspaces/$TMUX_WORKSPACE -maxdepth 1 -mindepth 1 -type d -printf '%P\n' | fzf --exit-0)"
-project="$(echo $selected | tr ' .' _)"
-session="workspace/$TMUX_WORKSPACE/$project"
-directory="$HOME/workspaces/$TMUX_WORKSPACE/$project"
+function choices() {
+    echo root
+    find ~/workspaces/$TMUX_WORKSPACE -maxdepth 1 -mindepth 1 -type d -printf '%P\n'
+}
+
+selected="$(choices | fzf --exit-0)"
+
+case "$selected" in
+    root)
+        session="workspace/$TMUX_WORKSPACE/root"
+        directory="$HOME/workspaces/$TMUX_WORKSPACE"
+        ;;
+    *)
+        project="$(echo $selected | tr ' .' _)"
+        session="workspace/$TMUX_WORKSPACE/$project"
+        directory="$HOME/workspaces/$TMUX_WORKSPACE/$project"
+        ;;
+esac
 
 if ! tmux has-session -t "$session" 2> /dev/null; then
     tmux new-session -ds "$session" -c "$directory"
