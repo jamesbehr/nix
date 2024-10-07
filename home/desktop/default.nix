@@ -47,15 +47,6 @@ in
     };
   };
 
-  programs.wpaperd = {
-    enable = true;
-    settings = {
-      default = {
-        path = "/home/james/Pictures/wallpapers/";
-      };
-    };
-  };
-
   programs.waybar = {
     enable = true;
     settings = {
@@ -84,6 +75,8 @@ in
     };
   };
 
+  home.file.".icons/default".source = "${pkgs.vanilla-dmz}/share/icons/Vanilla-DMZ";
+
   wayland.windowManager.hyprland = {
     enable = true;
     settings = {
@@ -108,12 +101,12 @@ in
       ];
 
       exec-once = [
-        "wpaperd"
         "waybar"
       ];
       general = {
         gaps_in = 5;
         gaps_out = 10;
+        resize_on_border = true;
       };
       input = {
         follow_mouse = 2;
@@ -124,23 +117,69 @@ in
     };
   };
 
-  services.swayidle = {
+  services.hypridle = {
     enable = true;
-    timeouts = [
-      {
-        timeout = 300;
-        command = "${pkgs.swaylock}/bin/swaylock -f -c 000000";
-      }
-      {
-        timeout = 600;
-        command = "${pkgs.hyprland}/bin/hyprctl dispatch dpms off";
-        resumeCommand = "${pkgs.hyprland}/bin/hyprctl dispatch dpms on";
-      }
-    ];
+    settings = {
+      general = {
+        lock_cmd = "hyprlock";
+      };
+
+      listeners = [
+        {
+          timeout = 300;
+          on-timeout = "loginctl lock-session";
+        }
+        {
+          timeout = 600;
+          on-timeout = "hyprctl dispatch dpms off";
+          on-resume = "hyprctl dispatch dpms on";
+        }
+      ];
+    };
+  };
+
+  home.file.".wallpapers".source = ./wallpapers;
+
+  services.hyprpaper = {
+    enable = true;
+    settings = {
+      preload = ["~/.wallpapers/pink-metal-board.webp"];
+      wallpaper = [",~/.wallpapers/pink-metal-board.webp"];
+    };
+  };
+
+  programs.hyprlock = {
+    enable = true;
+    settings = {
+      general = {
+        grace = 10;
+      };
+      background = [
+        {
+          path = "screenshot";
+          blur_passes = 3;
+          blur_size = 8;
+        }
+      ];
+      input-field = [
+        {
+          size = "200, 50";
+          position = "0, -80";
+          monitor = "";
+          dots_center = true;
+          fade_on_empty = false;
+          font_color = "rgb(202, 211, 245)";
+          inner_color = "rgb(91, 96, 120)";
+          outer_color = "rgb(24, 25, 38)";
+          outline_thickness = 5;
+          placeholder_text = ''<span foreground="##cad3f5">Password...</span>'';
+          shadow_passes = 2;
+        }
+      ];
+    };
   };
 
   programs.rofi.enable = true;
-  programs.swaylock.enable = true;
 
   services.fluidsynth = {
     enable = true;

@@ -150,8 +150,9 @@
 
   programs.hyprland.enable = true;
 
-  # Allow Swaylock to work on Hyprland
-  security.pam.services.swaylock = { };
+  # Allow Hyprlock to work on Hyprland
+  # TODO: Conditionally enable this when hyprland is enabled
+  security.pam.services.hyprlock = { };
 
   services.gnome.at-spi2-core.enable = true;
   services.dbus.enable = true;
