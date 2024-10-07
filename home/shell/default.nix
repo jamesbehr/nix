@@ -1,4 +1,4 @@
-{ pkgs, lib, inputs, system, config, ... }:
+{ pkgs, lib, config, ... }:
 
 with lib;
 let user = config.niks.user;

@@ -36,31 +36,32 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users.james = { pkgs, ... }: {
-              imports = [
-                ./home/neovim
-                ./home/shell
-                ./home/browser
-                ./home/terminal
-                ./home/dev
-                ./home/desktop
-              ];
+              imports = [ ./home ];
               home.stateVersion = "22.05";
-              niks.user = {
-                name = "James Behr";
-                email = "jamesbehr@gmail.com";
-              };
-              niks.dev = {
-                haskell.enable = true;
-                go.enable = true;
-                aws.enable = true;
-                python.enable = true;
-                rust.enable = true;
-                node.enable = true;
-                lua.enable = true;
-                terraform.enable = true;
-                c.enable = true;
-                nix.enable = true;
-                qmk.enable = true;
+              niks = {
+                user = {
+                  name = "James Behr";
+                  email = "jamesbehr@gmail.com";
+                };
+                nvim.enable = true;
+                desktop = {
+                  browser.enable = true;
+                  kitty.enable = true;
+                  hyprland.enable = true;
+                };
+                dev = {
+                  haskell.enable = true;
+                  go.enable = true;
+                  aws.enable = true;
+                  python.enable = true;
+                  rust.enable = true;
+                  node.enable = true;
+                  lua.enable = true;
+                  terraform.enable = true;
+                  c.enable = true;
+                  nix.enable = true;
+                  qmk.enable = true;
+                };
               };
             };
           }
@@ -87,27 +88,28 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users."james.behr" = { pkgs, ... }: {
-              imports = [
-                ./home/neovim
-                ./home/shell
-                ./home/dev
-                ./home/terminal
-                ./home/browser
-              ];
+              imports = [ ./home ];
               home.stateVersion = "22.05";
-              niks.user = {
-                name = "James Behr";
-                email = "james.behr@takealot.com";
-              };
-              niks.dev = {
-                terraform.enable = true;
-                docker.enable = true;
-                k8s.enable = true;
-                gcp.enable = true;
-                ruby.enable = true;
-                nix.enable = true;
-                scala.enable = true;
-                go.enable = true;
+              niks = {
+                user = {
+                  name = "James Behr";
+                  email = "james.behr@takealot.com";
+                };
+                nvim.enable = true;
+                desktop = {
+                  kitty.enable = true;
+                  browser.enable = true;
+                };
+                dev = {
+                  terraform.enable = true;
+                  docker.enable = true;
+                  k8s.enable = true;
+                  gcp.enable = true;
+                  ruby.enable = true;
+                  nix.enable = true;
+                  scala.enable = true;
+                  go.enable = true;
+                };
               };
             };
           }
