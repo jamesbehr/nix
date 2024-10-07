@@ -1,0 +1,25 @@
+#!/usr/bin/env sh
+set -eo pipefail
+
+case "$(uname -a)" in
+    "Linux "*)
+        if command -v nixos-rebuild 2>&1 >/dev/null; then
+            sudo nixos-rebuild switch --flake .
+        else
+            echo "Unable to find nixos-rebuild. Are you using NixOS?"
+            exit 1
+        fi
+        ;;
+    "Darwin "*)
+        if command -v darwin-rebuild 2>&1 >/dev/null; then
+            darwin-rebuild switch --flake .
+        else
+            echo "Unable to find darwin-rebuild. Is nix-darwin is installed?"
+            exit 1
+        fi
+        ;;
+    *)
+        echo "Unsupported operating system"
+        exit 1
+        ;;
+esac
