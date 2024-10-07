@@ -90,7 +90,7 @@ in
           "SUPER,Space,exec,rofi -show drun"
           "SUPER SHIFT,c,killactive"
           "SUPER SHIFT,q,exit"
-          "SUPER SHIFT,l,exec,pkill --signal SIGUSR1 swayidle"
+          "SUPER SHIFT,l,exec,loginctl lock-session"
           "SUPER,h,movecurrentworkspacetomonitor,l"
           "SUPER,j,movecurrentworkspacetomonitor,d"
           "SUPER,k,movecurrentworkspacetomonitor,u"
@@ -129,7 +129,7 @@ in
           lock_cmd = "hyprlock";
         };
 
-        listeners = [
+        listener = [
           {
             timeout = 300;
             on-timeout = "loginctl lock-session";
@@ -157,7 +157,7 @@ in
       enable = true;
       settings = {
         general = {
-          grace = 10;
+          grace = 5;
         };
         background = [
           {
