@@ -1,5 +1,6 @@
 local config = require('lspconfig')
 local keymap = require('keymap')
+local niks = require('niks')
 
 keymap.nnoremap('[d', vim.diagnostic.goto_prev, {silent=true})
 keymap.nnoremap(']d', vim.diagnostic.goto_next, {silent=true})
@@ -51,47 +52,63 @@ local on_attach = function (client, bufnr)
     })
 end
 
-config["solargraph"].setup({
-    on_attach = on_attach,
-})
+if niks["dev"]["ruby"]["enable"] then
+    config["solargraph"].setup({
+        on_attach = on_attach,
+    })
+end
 
-config["gopls"].setup({
-    on_attach = on_attach,
-})
+if niks["dev"]["go"]["enable"] then
+    config["gopls"].setup({
+        on_attach = on_attach,
+    })
+end
 
-config["terraformls"].setup({
-    on_attach = on_attach,
-})
+if niks["dev"]["terraform"]["enable"] then
+    config["terraformls"].setup({
+        on_attach = on_attach,
+    })
+end
 
-config["nil_ls"].setup({
-    on_attach = on_attach,
-})
+if niks["dev"]["nix"]["enable"] then
+    config["nil_ls"].setup({
+        on_attach = on_attach,
+    })
+end
 
-config["hls"].setup({
-    on_attach = on_attach,
-})
+if niks["dev"]["haskell"]["enable"] then
+    config["hls"].setup({
+        on_attach = on_attach,
+    })
+end
 
-config["tsserver"].setup({
-    on_attach = on_attach,
-})
+if niks["dev"]["node"]["enable"] then
+    config["ts_ls"].setup({
+        on_attach = on_attach,
+    })
+end
 
-config["rust_analyzer"].setup({
-    on_attach = on_attach,
-})
+if niks["dev"]["rust"]["enable"] then
+    config["rust_analyzer"].setup({
+        on_attach = on_attach,
+    })
+end
 
-local metals_config = require("metals").bare_config()
+if niks["dev"]["scala"]["enable"] then
+    local metals_config = require("metals").bare_config()
 
-metals_config.settings = {
-    useGlobalExecutable = true
-}
+    metals_config.settings = {
+        useGlobalExecutable = true
+    }
 
-metals_config.on_attach = on_attach
+    metals_config.on_attach = on_attach
 
-local nvim_metals_group = vim.api.nvim_create_augroup("nvim-metals", { clear = true })
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = { "scala", "sbt", "java" },
-  callback = function()
-    require("metals").initialize_or_attach(metals_config)
-  end,
-  group = nvim_metals_group,
-})
+    local nvim_metals_group = vim.api.nvim_create_augroup("nvim-metals", { clear = true })
+    vim.api.nvim_create_autocmd("FileType", {
+      pattern = { "scala", "sbt", "java" },
+      callback = function()
+        require("metals").initialize_or_attach(metals_config)
+      end,
+      group = nvim_metals_group,
+    })
+end
