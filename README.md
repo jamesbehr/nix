@@ -7,7 +7,7 @@ using Nix.
 To automatically select the correct configuration based on your hostname, just
 run the following using the repository root as your working directory.
 
-    sudo nixos-rebuild switch --flake .
+    make switch
 
 You should also remove old generations periodically, to avoid using up all your disk space.
 The simplest way to do this is with the `nix-collect-garbage` utility
@@ -61,7 +61,7 @@ After this, the `darwin-rebuild` binary should be in your PATH, so you can just
 run the following to update your system after making changes to the
 configuration.
 
-    darwin-rebuild switch --flake .
+    make switch
 
 ### Live CD
 You can build the custom ISO by running the following command using the
