@@ -31,8 +31,8 @@
   homebrew = {
     enable = true;
     onActivation.autoUpdate = true;
-    brews = [ ];
-    casks = [ "obs" "docker" "firefox" ];
+    brews = [ "hashcat" ];
+    casks = [ "obs" "rancher" "postman" "dbeaver-community" "steam" "firefox" ];
   };
 
   system = {
@@ -41,4 +41,8 @@
       remapCapsLockToEscape = true;
     };
   };
+
+  nixpkgs.config.allowUnfree = true;
+
+  system.stateVersion = 5;
 }

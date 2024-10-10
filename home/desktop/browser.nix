@@ -9,8 +9,7 @@ in {
   config = mkIf cfg.enable {
     programs.chromium = {
       enable = true;
-      # There is no Darwin package available
-      package = if pkgs.stdenv.isLinux then pkgs.google-chrome else null;
+      package = pkgs.google-chrome;
     };
 
     programs.firefox = {
