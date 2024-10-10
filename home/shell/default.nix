@@ -84,8 +84,20 @@ in
       baseIndex = 1;
       keyMode = "vi";
       extraConfig = ''
-        bind-key -r C-f display-popup -E -E tmux-project-switch
-        bind-key -r C-w display-popup -E -E tmux-workspace-switch
+        bind-key -r ^ last-window
+        bind-key -r k select-pane -U
+        bind-key -r j select-pane -D
+        bind-key -r h select-pane -L
+        bind-key -r l select-pane -R
+
+        bind-key -r C-w display-popup -E -E "tmux-switcher find_workspace"
+        bind-key -r C-r run-shell "tmux-switcher goto_root"
+        bind-key -r C-f display-popup -E -E "tmux-switcher find_project"
+        bind-key -r C-h run-shell "tmux-switcher jump_project 1"
+        bind-key -r C-j run-shell "tmux-switcher jump_project 2"
+        bind-key -r C-k run-shell "tmux-switcher jump_project 3"
+        bind-key -r C-l run-shell "tmux-switcher jump_project 4"
+        bind-key -r C-n run-shell "tmux-switcher goto_project notes"
 
         source-file ${pkgs.vimPlugins.nightfox-nvim}/extra/duskfox/duskfox.tmux
       '';
