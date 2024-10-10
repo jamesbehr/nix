@@ -99,6 +99,11 @@ in
         (map (n: "SUPER, ${n}, workspace, ${n}") workspaces) ++
         (map (n: "SUPER SHIFT, ${n}, movetoworkspace, ${n}") workspaces);
 
+        bindm = [
+          "SUPER, mouse:272, movewindow"
+          "SUPER, mouse:273, resizewindow"
+        ];
+
         # Allow these binds to work while the screen is locked
         bindl = [
           "SUPER,F1,exec,ddcutil --bus 8 --async setvcp 60 0x1b && ddcutil --bus 7 --async setvcp 60 0x11"
