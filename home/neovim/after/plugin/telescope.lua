@@ -23,9 +23,6 @@ require("telescope").setup({
             override_file_sorter = true,
             case_mode = 'smart_case',
         },
-        file_browser = {
-            hidden = true, -- show hidden files by default
-        },
     }
 })
 
@@ -40,8 +37,6 @@ end)
 
 nnoremap("<leader><return>", builtin.buffers)
 
-nnoremap("<leader>f", function()
-    extensions.file_browser.file_browser({ path = "%:p:h" })
-end)
+nnoremap("<leader>f", "<cmd>e %:h<cr>")
 
 nnoremap("<leader>rg", builtin.live_grep)
