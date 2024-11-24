@@ -1,7 +1,0 @@
-#!/usr/bin/env bash
-dir=${XDG_CACHE_HOME:-~/.cache}/nvim
-if [ -z "$TMUX" ]; then
-    echo "$dir/tty-$(basename $(tty)).pipe"
-else
-    echo "$dir/tmux-$(tmux display-message -p \#S).pipe"
-fi

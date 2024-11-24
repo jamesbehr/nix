@@ -37,6 +37,6 @@ end)
 
 nnoremap("<leader><return>", builtin.buffers)
 
-nnoremap("<leader>f", "<cmd>e %:h<cr>")
+nnoremap("<leader>f", "<cmd>Ex<cr>")
 
 nnoremap("<leader>rg", builtin.live_grep)

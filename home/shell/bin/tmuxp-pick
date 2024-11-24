@@ -1,0 +1,2 @@
+#!/usr/bin/env sh
+tmuxp load -y "$(tmuxp ls | fzf)"
