@@ -51,17 +51,18 @@
                   hyprland.enable = true;
                 };
                 dev = {
-                  haskell.enable = true;
-                  go.enable = true;
                   aws.enable = true;
-                  python.enable = true;
-                  rust.enable = true;
-                  node.enable = true;
-                  lua.enable = true;
-                  terraform.enable = true;
                   c.enable = true;
+                  go.enable = true;
+                  haskell.enable = true;
+                  lua.enable = true;
                   nix.enable = true;
+                  node.enable = true;
+                  python.enable = true;
                   qmk.enable = true;
+                  rust.enable = true;
+                  terraform.enable = true;
+                  zig.enable = true;
                 };
               };
             };

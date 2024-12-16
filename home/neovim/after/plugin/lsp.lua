@@ -94,6 +94,12 @@ if niks["dev"]["rust"]["enable"] then
     })
 end
 
+if niks["dev"]["zig"]["enable"] then
+    config["zls"].setup({
+        on_attach = on_attach,
+    })
+end
+
 if niks["dev"]["scala"]["enable"] then
     local metals_config = require("metals").bare_config()
 
